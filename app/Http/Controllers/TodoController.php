@@ -24,10 +24,4 @@ class TodoController extends Controller
         $content->save();
         return redirect('/');
     }
-    public function index()
-    {
-        $task = DB::select('select * from todo');
-        $data = ['content' => $task];
-        return view('todo.todocheck', $data);
-    }
 }

@@ -12,7 +12,7 @@ class Todo extends Model
     protected $fillable = ['content'];
     
         public static $rules = array(
-        'content' => 'integer|min:1|max:20',
+        'content' => 'required|max:20',
     );
 }
 function createTodo($Todo)

@@ -10,6 +10,11 @@
   <form action="/" method="post">
     @csrf
     <h3>Todo List</h3>
+    @if (count($errors) > 0)
+      @foreach ($errors->all() as $error)
+      <p>・The content field is required.</p>
+      @endforeach
+    @endif
       <input type="text" name="content">
       <button class="button_1">追加</button><br>
   </form>
