@@ -18,7 +18,7 @@ class TodoController extends Controller
         
         $content->content=$request->input('content');
         
-        $this->validate($request, Todo::$rules);
+        $this->validate($request, $content, Todo::$rules);
         $form = $request->all();
         Todo::create($form);
         $content->save();
