@@ -12,12 +12,15 @@ class TodoController extends Controller
     {
         return view('index');
     }
-    public function store(Request $request)
+    public function create(Request $request)
     {
         $content = new Todo;
         
         $content->content=$request->input('content');
         
+        $this->validate($request, Todo::$rules);
+        $form = $request->all();
+        Todo::create($form);
         $content->save();
         return redirect('/');
     }

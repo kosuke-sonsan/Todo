@@ -9,7 +9,11 @@ use Carbon\Carbon;
 class Todo extends Model
 {
     use HasFactory;
-    protected $guarded = array('id');
+    protected $fillable = ['content'];
+    
+        public static $rules = array(
+        'content' => 'integer|min:1|max:20',
+    );
 }
 function createTodo($Todo)
 {
