@@ -10,7 +10,7 @@
   <form action="/" method="post">
     @csrf
     <h3>Todo List</h3>
-      <input type="text" name="task">
+      <input type="text" name="content">
       <button class="button_1">追加</button><br>
   </form>
 </body>

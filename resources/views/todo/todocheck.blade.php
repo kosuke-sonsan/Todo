@@ -8,8 +8,8 @@
 </head>
 <body>
 <ul>
-    @foreach ($task as $data)
-    <li>{{ $data->task }}</li>
+    @foreach ($task ?? 'task' as $data)
+    <li>{{ $task->task }}</li>
     @endforeach
 </ul>
 </body>
