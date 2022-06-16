@@ -24,7 +24,7 @@
         </tr>
         @foreach($items as $item)
         <tr>
-          <td>{{$item->updated_at}}</td>
+          <td>{{$item->created_at}}</td>
           <td>{{$item->content}}</td>
         </tr>
         @endforeach

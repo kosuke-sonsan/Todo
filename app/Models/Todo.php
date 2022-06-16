@@ -9,17 +9,11 @@ use Carbon\Carbon;
 class Todo extends Model
 {
     use HasFactory;
-    protected $fillable = ['content'];
+    protected $fillable = ['content', 'created_at', 'updated_at'];
     
         public static $rules = array(
         'content' => 'required|max:20',
+        'created_at' => 'date_format:"Y-m-d /H:i:s.u"',
+        'updated_at' => 'date_format:"Y-m-d /H:i:s.u"'
     );
-}
-function createTodo($Todo)
-{
-    $now = Carbon::date()->format('Y-m-d H:i:s:v');
-
-    $Todo = new Todo();
-    $Todo->created_at = $now;
-    $Todo->updated_at = $now;
 }

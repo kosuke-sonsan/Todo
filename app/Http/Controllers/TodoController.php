@@ -10,7 +10,12 @@ class TodoController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $items = [
+            Todo::select('content', 'created_at')->get(),
+            $task = 'content',
+            $time = 'created_at',
+    ];
+        return view('index', compact('content', 'created_at'));
     }
     public function create(Request $request)
     {
@@ -25,10 +30,5 @@ class TodoController extends Controller
     }
     public function update()
     {
-        $items = DB::select('select * from todos');
-        $recode = ['content'=>$items];
-        $time = ['created_at'=>$items];
-        
-        return view('index',$recode, $time);
     }
 }
