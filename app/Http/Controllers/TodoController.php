@@ -8,7 +8,7 @@ use App\Models\Todo;
 
 class TodoController extends Controller
 {
-    public function addition()
+    public function index()
     {
         return view('index');
     }
@@ -16,12 +16,19 @@ class TodoController extends Controller
     {
         $content = new Todo;
         
-        $content->content=$request->input('content');
+        $content->content=$request->content;
         
-        $this->validate($request, $content, Todo::$rules);
+        $this->validate($request, Todo::$rules);
         $form = $request->all();
         Todo::create($form);
-        $content->save();
         return redirect('/');
+    }
+    public function update()
+    {
+        $items = DB::select('select * from todos');
+        $recode = ['content'=>$items];
+        $time = ['created_at'=>$items];
+        
+        return view('index',$recode, $time);
     }
 }

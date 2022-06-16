@@ -14,11 +14,6 @@ class Todo extends Model
         public static $rules = array(
         'content' => 'required|max:20',
     );
-    public function getDetail()
-    {
-        $txt = $this->id . ' ' . $this->content . ' ' . $this->created_at . ' ' . $this->updated_at;
-        return $txt;
-    }
 }
 function createTodo($Todo)
 {
