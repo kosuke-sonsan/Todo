@@ -15,5 +15,5 @@ class Todo extends Model
         'content' => 'required|max:20',
         'created_at' => 'date_format:"Y-m-d /H:i:s.u"',
         'updated_at' => 'date_format:"Y-m-d /H:i:s.u"'
-    );
+        );
 }

@@ -10,12 +10,8 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $items = [
-            Todo::select('content', 'created_at')->get(),
-            $task = 'content',
-            $time = 'created_at',
-    ];
-        return view('index', compact('content', 'created_at'));
+        $items = Todo::all();
+        return view('index', compact('items'));
     }
     public function create(Request $request)
     {
