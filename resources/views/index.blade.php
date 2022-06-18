@@ -17,18 +17,7 @@
     @endif
       <input type="text" name="content">
       <button class="button_1">追加</button><br>
-      <table>
-        <tr>
-          <th>作成日</th>
-          <th>タスク名</th>
-        </tr>
-        @foreach($items as $item)
-        <tr>
-          <td>{{$item->created_at}}</td>
-          <td>{{$item->content}}</td>
-        </tr>
-        @endforeach
-      </table>
+      @yield('update')
   </form>
 </body>
 </html>

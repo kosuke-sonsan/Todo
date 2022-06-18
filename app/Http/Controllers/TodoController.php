@@ -24,7 +24,11 @@ class TodoController extends Controller
         Todo::create($form);
         return redirect('/');
     }
-    public function update()
+    public function update(Request $request)
     {
+        $article = Todo::find($request->content);
+        $article->content = $request->content;
+        $article->save();
+        return redirect('/todo/update');
     }
 }
