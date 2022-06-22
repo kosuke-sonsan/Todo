@@ -17,6 +17,6 @@
     @endif
       <input type="text" name="content">
       <button class="button_1">追加</button><br>
-      @yield('update')
   </form>
+  @yield('update')
 </body>

@@ -9,10 +9,10 @@
         <th>タスク名</th>
         <th>更新</th>
       </tr>
-      @foreach($items as $item)
+    @foreach($items as $item)
       <tr>
         <td>{{$item->created_at}}</td>
-        <td><input type="text" name='content' value="{{$item->content}}"></td>
+        <td><input type="text" name="content" value="{{$item->content}}"></td>
         <td><button class="update">更新</button></td>
       </tr>
     @endforeach
