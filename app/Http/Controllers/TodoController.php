@@ -27,10 +27,11 @@ class TodoController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, Todo::$rules);
-        $articles = Todo::find($request->content);
-        unset($articles['_token']);
-        Todo::where('content', $request->content)->update($request);
-        $articles->save();
+        $article = $request->all();
+        unset($article['_token']);
+        Todo::where('content', $request->content)->update($article);
+        Todo::where('updated_at', $request->updated_at)->update($article);
+        $article->save();
         return redirect('/todo/update');
     }
 }
