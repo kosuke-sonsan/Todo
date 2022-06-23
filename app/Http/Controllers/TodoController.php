@@ -15,10 +15,6 @@ class TodoController extends Controller
     }
     public function create(Request $request)
     {
-        $content = new Todo;
-        
-        $content->content=$request->content;
-        
         $this->validate($request, Todo::$rules);
         $form = $request->all();
         Todo::create($form);
@@ -29,9 +25,12 @@ class TodoController extends Controller
         $this->validate($request, Todo::$rules);
         $article = $request->all();
         unset($article['_token']);
-        Todo::where('content', $request->content)->update($article);
-        Todo::where('updated_at', $request->updated_at)->update($article);
-        $article->save();
-        return redirect('/todo/update');
+        Todo::where('id', $request->id)->update($article);
+        return redirect('/');
+    }
+    public function delete(Request $request)
+    {
+        $data = Todo::find($request->id);
+        return view('/', ['items' => $data]);
     }
 }
