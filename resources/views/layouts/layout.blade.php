@@ -4,22 +4,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ asset=('resources/css/todo.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <title></title>
 </head>
 <body>
   <div class="table">
-  <form action="/todo/create" method="post">
+    <form action="/todo/create" method="post">
     @csrf
-    <h3>Todo List</h3>
-    @if (count($errors) > 0)
-      @foreach ($errors->all() as $error)
-      <p>・The content field is required.</p>
-      @endforeach
-    @endif
-      <input type="text" name="content">
-      <button class="button_1">追加</button><br>
-  </form>
-  @yield('update')
+      <h3>Todo List</h3>
+      @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+        <p>・The content field is required.</p>
+        @endforeach
+      @endif
+        <input type="text" name="content">
+        <button class="button_1">追加</button><br>
+    </form>
+    @yield('update')
   </div>
 </body>
