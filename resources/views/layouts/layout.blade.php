@@ -17,7 +17,7 @@
         <p>・The content field is required.</p>
         @endforeach
       @endif
-        <input type="text" name="content">
+        <input type="text" name="content" class="text1">
         <button class="button_1">追加</button><br>
     </form>
     @yield('update')
