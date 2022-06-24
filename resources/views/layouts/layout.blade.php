@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ asset=('resources/css/todo.css') }}" />
   <title></title>
 </head>
 <body>
+  <div class="table">
   <form action="/todo/create" method="post">
     @csrf
     <h3>Todo List</h3>
@@ -19,4 +21,5 @@
       <button class="button_1">追加</button><br>
   </form>
   @yield('update')
+  </div>
 </body>

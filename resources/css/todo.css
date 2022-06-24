@@ -3,7 +3,8 @@ body {
   background-color: #6A5ACD;
 }
 
-
 .table {
   position: absolute;
+  top: 15%;
+  left: 15%;
 }
