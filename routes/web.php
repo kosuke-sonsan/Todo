@@ -19,3 +19,13 @@ Route::post('/todo/create', [TodoController::class, 'create']);
 Route::post('/todo/update', [TodoController::class, 'update'])->name('todo.update');
 Route::get('/todo/delete', [TodoController::class, 'delete'])->name('todo.delete');
 Route::post('/todo/delete', [TodoController::class, 'remove']);
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
