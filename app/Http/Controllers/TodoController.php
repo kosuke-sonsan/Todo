@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
+        public function store(LoginRequest $request)
+    {
+        $request->authenticate();
+        $request->session()->regenerate();
+        return redirect()->intended(RouteSeviceProvider::HOME);
+    }
     public function index()
     {
         $items = Todo::all();

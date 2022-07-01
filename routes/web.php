@@ -20,12 +20,16 @@ Route::post('/todo/update', [TodoController::class, 'update'])->name('todo.updat
 Route::get('/todo/delete', [TodoController::class, 'delete'])->name('todo.delete');
 Route::post('/todo/delete', [TodoController::class, 'remove']);
 
-Route::get('/', function () {
+Route::post('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/', function () {
+    return view('index');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/sayhi', function(){
+  return spirintf('<h1>Hi, %s</h1>', auth()->user()->name);
+})->middleware(['auth'])->name('sayhi');
 
 require __DIR__.'/auth.php';
