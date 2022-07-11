@@ -21,6 +21,7 @@ Route::post('/todo/update', [TodoController::class, 'update'])->name('todo.updat
 Route::get('/todo/delete', [TodoController::class, 'delete'])->name('todo.delete');
 Route::post('/todo/delete', [TodoController::class, 'remove']);
 
+
 // Route::get('/', function () {
 //     return view('dashboard');
 // });
