@@ -14,7 +14,7 @@ class CreateLogsInTable extends Migration
     public function up()
     {
         Schema::create('logs_in', function (Blueprint $table) {
-            $table->integer('todo_id'); 
+            $table->foreignId('todo_id')->constrained();
             $table->increments('user_id');
             $table->string('name');
             $table->string('email')->unique();
