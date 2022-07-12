@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 Route::get('/', [TodoController::class, 'index']);
+Route::post('/', [TodoController::class, 'keyword']);
 Route::post('/todo/create', [TodoController::class, 'create']);
 Route::post('/todo/update', [TodoController::class, 'update'])->name('todo.update');
 Route::get('/todo/delete', [TodoController::class, 'delete'])->name('todo.delete');

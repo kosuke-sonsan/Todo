@@ -20,6 +20,16 @@ class TodoController extends Controller
         $items = Todo::all();
         return view('index', compact('items'));
     }
+    public function keyword(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $query = Todo::query();
+        if(!empty($keyword)) {
+            $query->where('content', 'LIKE', "%{$keyword}%");
+        }
+        $posts = $query->get();
+        return view('layout', compact('posts', 'keyword'));
+    }
     public function create(Request $request)
     {
         $this->validate($request, Todo::$rules);
@@ -27,8 +37,10 @@ class TodoController extends Controller
         Todo::create($form);
         return redirect('/');
     }
-    public function update(Request $request)
+    public function update(Request $request): Response
     {
+        dump($this->authenticatedUser->user());
+        dump($this->authenticatedUser->id());
         $this->validate($request, Todo::$rules);
         $article = $request->all();
         unset($article['_token']);
@@ -45,4 +57,10 @@ class TodoController extends Controller
         Todo::find($request->id)->delete();
         return redirect('/');
     }
+        public function __construct(private AuthenticatedUser $authenticatedUser)
+    {
+    }
+    /**
+     * @return Response
+     */
 }
