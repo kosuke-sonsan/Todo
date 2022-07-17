@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Todo;
+use App\Models\Article;
 use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
+    public function __construct()
+    {
+    $this->middleware('auth');
+    }
         public function store(LoginRequest $request)
     {
         $request->authenticate();
@@ -17,6 +22,12 @@ class TodoController extends Controller
     }
     public function index()
     {
+        $user = Auth::id();
+        if (Auth::check()) {
+            return view('layouts/layout');
+        } else {
+            return view('auth/login');
+        }
         $items = Todo::all();
         return view('index', compact('items'));
     }
@@ -24,23 +35,24 @@ class TodoController extends Controller
     {
         $keyword = $request->input('keyword');
         $query = Todo::query();
+        
         if(!empty($keyword)) {
             $query->where('content', 'LIKE', "%{$keyword}%");
         }
-        $posts = $query->get();
-        return view('layout', compact('posts', 'keyword'));
+        $posts = $query->get()->paginate(10);
+        return view("layout", compact('posts', 'keyword'));
     }
     public function create(Request $request)
     {
         $this->validate($request, Todo::$rules);
         $form = $request->all();
+        unset($form['_token']);
+        $user = Auth::id();
         Todo::create($form);
         return redirect('/');
     }
     public function update(Request $request): Response
     {
-        dump($this->authenticatedUser->user());
-        dump($this->authenticatedUser->id());
         $this->validate($request, Todo::$rules);
         $article = $request->all();
         unset($article['_token']);
@@ -57,10 +69,4 @@ class TodoController extends Controller
         Todo::find($request->id)->delete();
         return redirect('/');
     }
-        public function __construct(private AuthenticatedUser $authenticatedUser)
-    {
-    }
-    /**
-     * @return Response
-     */
 }

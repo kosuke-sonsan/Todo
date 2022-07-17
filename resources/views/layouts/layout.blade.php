@@ -10,12 +10,12 @@
 <body>
   <div class="table">
     <div>
-  <form action="{{ route('posts.index') }}" method="GET">
-    @csrf
-    <input type="text" name="keyword" value="{{ $keyword }}">
-    <input type="submit" value="検索">
-  </form>
-</div>
+      <form action="{{ route('todo.keyword') }}" method="get">
+        @csrf
+        <input type="text" name="keyword" value="{{ $keyword }}">
+        <input type="submit" value="検索" />
+      </form>
+    </div>
     <form action="/todo/create" method="post">
     @csrf
       <h3>Todo List</h3>
